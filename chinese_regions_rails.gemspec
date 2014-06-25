@@ -12,8 +12,7 @@ Gem::Specification.new do |s|
   s.description = "中国省市区县数据库，包含 行政编码，邮政编码，地区拼音和简拼。 数据来源 https://github.com/xixilive/chinese_regions_db"
   s.authors     = ["Basten Gao"]
   s.email       = 'bastengao@gmail.com'
-  # s.files       = ["lib/chinese_regions.rb"]
-  s.files      += Dir.glob("lib/**/*")
+  s.files      += Dir["Gemfile", "README.md", "Rakefile", "lib/**/*"]
   s.homepage    = 'https://github.com/bastengao/chinese_regions_rails'
   s.license     = 'MIT'
   s.required_ruby_version     = '>= 1.9.3'
