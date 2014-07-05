@@ -22,3 +22,15 @@ db migration and seed
 rake db:migrate
 rake db:seed:regions
 ```
+
+## Region 包含的属性
+
+* code
+* parent_code
+* level
+* name
+* alias
+* pinyin
+* abbr
+* zip
+* level
