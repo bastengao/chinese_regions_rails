@@ -35,4 +35,3 @@ rake db:seed:regions
 * pinyin
 * abbr
 * zip
-* level
