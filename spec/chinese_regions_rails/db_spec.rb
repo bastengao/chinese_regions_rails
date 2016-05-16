@@ -2,7 +2,7 @@ require "helper"
 
 require "chinese_regions_rails/db"
 
-describe "db" do
+describe ChineseRegionsRails::DB do
   it "db" do
     db = ChineseRegionsRails::DB.db
     expect(db).to be_truthy

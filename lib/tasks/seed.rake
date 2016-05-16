@@ -17,7 +17,7 @@ namespace :db do
       args[:model_class] = 'region'
       region_class = args[:model_class].classify.constantize
 
-      ChineseRegionsRails::DB.query_regions do |region_param|
+      ChineseRegionsRails::JsonDataSource.query_regions do |region_param|
         region_class.create(region_param)
       end
 
