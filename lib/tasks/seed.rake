@@ -1,8 +1,5 @@
-# default model regions
 # rake db:seed:regions
 
-# TODO: rake db:seed:regions xxx_regions
-# custom model to xxx_regions
 require 'active_support/core_ext/string/inflections'
 require "chinese_regions_rails"
 
@@ -13,12 +10,12 @@ namespace :db do
 
     desc "seed regions data to db"
     task regions: :environment do
-      args ||= {}
-      args[:model_class] = 'region'
-      region_class = args[:model_class].classify.constantize
+      region_class = ChineseRegions::Region
 
       ChineseRegionsRails::JsonDataSource.query_regions do |region_param|
-        region_class.create(region_param)
+        region_param["id"] = region_param.delete("code")
+        region_param["parent_id"] = region_param.delete("parent_code")
+        region_class.create!(region_param)
       end
 
       puts "insert regions"

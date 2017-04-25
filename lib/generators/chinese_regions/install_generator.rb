@@ -3,11 +3,9 @@ require "rails/generators"
 module ChineseRegions
   class InstallGenerator < Rails::Generators::Base
 
-    desc "Generate region model. Default model name is 'Region'"
-
+    desc "Generate region model migration."
     def install
-      class_name = "region"
-      generate "model", "#{class_name} code:string parent_code:string name:string alias:string pinyin:string abbr:string zip:string level:integer"
+      rake 'railties:install:migrations'
     end
 
   end
