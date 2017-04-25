@@ -35,6 +35,32 @@ class User < ActiveRecord::Base
 end
 ```
 
+#### 使用 [city-picker](https://github.com/tshi0912/city-picker) 作为表单输入
+
+application.css 添加下面代码
+```
+*= require city-picker
+```
+
+application.js 中在 jQuery 后面引入文件
+```
+//= require city-picker.data
+//= require city-picker
+//= require chinese-regions
+```
+
+表单里可以使用 `city_picker_tag(method, value, options)` 和 `city_picker(method, options)`, 这两个标签只是简单的封装，options 可以传入任何东西。
+```erb
+# Region model
+<%= city_picker_tag :city_id, @user.city %>
+# Regoin id
+<%= city_picker_tag :city_id, "610101", data: { level: :city } %>
+
+<% form_for @user do |f| %>
+  <%= f.city_pciker :city_id %>
+<% end %>
+```
+
 ## Region model
 
 ```ruby
@@ -59,8 +85,9 @@ model 包含的属性
 * v1.0.0
 
     **Break Change**
-    
-    直接使用 engine 里的 ChineseRegions::Region model，而不是添加 model 到用户项目
+
+    * 直接使用 engine 里的 ChineseRegions::Region model，而不是添加 model 到用户项目
+    * 引入 city-picker
 
 * v0.1.*
 

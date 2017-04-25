@@ -7,12 +7,12 @@ module ChineseRegions
     belongs_to :parent, class_name: "Region" if Rails::VERSION::MAJOR < 5
     has_many :children, class_name: "Region", foreign_key: "parent_id"
 
-    def code
-      self.id
-    end
-
-    def parent_code
-      self.parent_id
+    def full_name(delimiter = "")
+      if parent.present?
+        "#{self.parent.full_name(delimiter)}#{delimiter}#{self.name}"
+      else
+        self.name
+      end
     end
   end
 end
