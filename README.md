@@ -49,15 +49,21 @@ application.js 中在 jQuery 后面引入文件
 //= require chinese-regions
 ```
 
-表单里可以使用 `city_picker_tag(method, value, options)` 和 `city_picker(method, options)`, 这两个标签只是简单的封装，options 可以传入任何东西。
+表单里可以使用 `city_picker_tag(method, value, options)` 和 `city_picker(method, options)`, 这两个标签只是简单的封装，options 可以传入任何东西, 比如 city-picer 的 level 和 simple 选项可以通过 data 传入 `data: { level: :city, simple: true }`。
 ```erb
-# Region model
-<%= city_picker_tag :city_id, @user.city %>
-# Regoin id
-<%= city_picker_tag :city_id, "610101", data: { level: :city } %>
+<%= form_tag do %>
+  <div style="position: relative;">
+    # Region model
+    <%= city_picker_tag :city_id, @user.city %>
+    # Regoin id
+    <%= city_picker_tag :city_id, "610101", data: { level: :city } %>
+  </div>
+<% end %>
 
 <% form_for @user do |f| %>
-  <%= f.city_pciker :city_id %>
+  <div style="position: relative;">
+    <%= f.city_pciker :city_id %>
+  </div>
 <% end %>
 ```
 
